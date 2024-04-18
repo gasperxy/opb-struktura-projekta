@@ -5,6 +5,7 @@ Glavne prednosti so:
 * Omogoča lažje (avtomatsko) testiranje aplikacije
 * Namenjena je aplikacijam za katere se v prihodnosti pričakuje nadgradnje
 * Novi razvijalci lažje najdejo pomembne in relevantne dele kode, ki ga potem lahko spreminjajo neodvisno od drugih delov aplikacije
+
   
 ## Osnovna ideja clean architecture strukture
   
@@ -18,6 +19,8 @@ Vizualno lahko to predstavimo s spodnjo shemo
       <img width="200" height="450" src="https://github.com/gasperxy/opb-struktura-projekta/assets/3481918/3a227b87-81b7-41a9-b81c-306a00ab5330">
     </p>
 
+Več informacij lahko najdete recimo na https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/
+
 ## Implementacija (V Python-u)
 Odvisno od zahtevnosti aplikacije so lahko posamezni nivoji aplikacije bodisi v svoji mapi (torej vključuje več datotek) bodisi je celotna logika nivoj implementirana v eni datoteki.
 V ta namen si lahko pripravite naslednje mape:
@@ -26,4 +29,9 @@ V ta namen si lahko pripravite naslednje mape:
 * Presentation (vključuje datoteke za predstavitveni nivo)
 
 Več podrobnosti in primere si lahko ogledate v repozitoriju.
+
+## Podatkovni nivo
+
+Za namen projekta pri predmetu OPB bomo za dostop do baze postgres uporabljali Python knjižnjico `psycopg2`. V večjih in bolj kompleksnih aplikacij se za podobne namene ponavadi uporablja bolj zmogljive knjižnjice, ki omogočajo uporabo ORM pristopa.
+Kljub temu, predlagam, da si podatkovne modele definirati kot Pythonove razrede oziroma bolj natančno `datamodels`, ki so del standardne Python distribucije.
 
