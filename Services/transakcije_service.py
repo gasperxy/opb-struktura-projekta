@@ -21,7 +21,7 @@ class TransakcijeService:
         return self.repo.dobi_transakcije_dto()
     
 
-    def naredi_transakcijo(self, o : oseba, znesek: float, opis: str) -> None:
+    def naredi_transakcijo_oseba(self, o : oseba, znesek: float, opis: str) -> None:
        
         # Naredimo objekt za transakcijo.
         # Za to potrebujemo številko računa.
@@ -34,8 +34,23 @@ class TransakcijeService:
             znesek=znesek,
             cas=datetime.now(),
             opis=opis
-            )
+            )        
+        # uporabimo repozitorij za zapis v bazo
+        self.repo.dodaj_transakcijo(t)
+
+    def naredi_transakcijo(self, racun: int, znesek: float, opis: str) -> None:
+       
+        # Naredimo objekt za transakcijo.
+        # Za to potrebujemo številko računa.
         
+
+        # Naredimo objekt za transakcijo
+        t = transakcija(
+            racun=racun,
+            znesek=znesek,
+            cas=datetime.now(),
+            opis=opis
+            )        
         # uporabimo repozitorij za zapis v bazo
         self.repo.dodaj_transakcijo(t)
 
@@ -44,4 +59,4 @@ class TransakcijeService:
         # Vsek osebam bi radi izplačali nagrado.
         osebe = self.repo.dobi_osebe()
         for o in osebe:
-            self.naredi_transakcijo(o, znesek, opis)
+            self.naredi_transakcijo_oseba(o, znesek, opis)

@@ -33,5 +33,24 @@ def index():
         
     return template('transakcije_dto.html', transakcije = transakcije_dto)
 
+@get('/dodaj_transakcijo')
+def index():
+    """
+    Stran za dodajanje transakcije.  """   
+    return template('dodaj_transakcijo.html')
+
+@post('/dodaj_transakcijo')
+def dodaj_transakcijo_post():
+    # Preberemo podatke iz forme. Lahko bi uporabili kakšno dodatno metodo iz service objekta
+
+    racun = int(request.forms.get('racun'))
+    znesek = float(request.forms.get('znesek'))
+    opis = request.forms.get('opis')   
+
+    service.naredi_transakcijo(racun, znesek, opis)
+    
+    
+    redirect(url('/'))
+
 if __name__ == "__main__":
     run(host='localhost', port=SERVER_PORT, reloader=RELOADER, debug=True)

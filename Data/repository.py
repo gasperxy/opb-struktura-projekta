@@ -18,6 +18,7 @@ class Repo:
         self.cur.execute("""
             SELECT id, racun, cas, znesek, opis
             FROM transakcija
+            Order by cas desc
         """)
         
         # rezultate querya pretovrimo v python seznam objektov (transkacij)
@@ -30,6 +31,7 @@ class Repo:
             FROM transakcija t 
             left join racun r on t.racun = r.stevilka
             left join oseba o on o.emso = r.lastnik
+            Order by t.cas desc
         """)
 
         transakcije = [transakcijaDto.from_dict(t) for t in self.cur.fetchall()]
