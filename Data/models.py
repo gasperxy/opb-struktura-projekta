@@ -16,6 +16,22 @@ class transakcija:
     opis: str=field(default="")
 
 
+# Za posamezno entiteto ponavadi ustvarimo tudi tako imenovan
+# DTO (database transfer object) objekt. To izhaja predvsem iz tega,
+# da v sami aplikaciji ponavadi želimo prikazati podatke drugače kot so v bazi.
+# Dodatno bi recimo želeli narediti kakšen join in vzeti podatek oziroma stolpec iz druge tabele
+@dataclass_json
+@dataclass
+class transakcijaDto:
+    id : int = field(default=0)
+    emso : str = field(default="")  # dodatno si shranimo še emso osebe
+    oseba : str = field(default="")  # dodatno si shranimo še ime osebe (kot ime + priimek)
+    racun : int = field(default=0)
+    cas: datetime=field(default=datetime.now()) 
+    znesek: float=field(default=0)
+    opis: str=field(default="")
+
+
 @dataclass_json
 @dataclass
 class oseba:

@@ -1,0 +1,43 @@
+%rebase('osnova.html', naslov='Transakcije', stran='transakcije')
+
+<div >
+   
+      <br>  
+    <div style="display: flex;">
+    <div style="flex:1;">
+      <table >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Racun</th>
+                <th>Čas</th>
+                <th>Znesek</th>  
+                <th>Opis</th>  
+             </tr>
+        </thead>
+     
+      %for transakcija in transakcije:
+        <tr>
+           <td>{{transakcija.id}}</td>
+           <td>{{transakcija.racun}}</td>
+           <td>{{transakcija.cas}}</td>
+           <td>{{transakcija.znesek}}</td>
+           <td>
+            {{transakcija.opis}}
+           </td>
+     
+        </tr>
+      %end
+      </table>
+
+
+    </div>    
+
+    </div>
+   
+</div>
+
+
+  
+
+  
