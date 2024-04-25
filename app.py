@@ -24,7 +24,7 @@ def index():
     return template('transakcije.html', transakcije = transakcije)
 
 @get('/transakcije_dto')
-def index():
+def transakcije_dto():
     """
     Stran z dto transakcijami.
     """   
@@ -34,7 +34,7 @@ def index():
     return template('transakcije_dto.html', transakcije = transakcije_dto)
 
 @get('/dodaj_transakcijo')
-def index():
+def dodaj_transakcijo():
     """
     Stran za dodajanje transakcije.  """   
     return template('dodaj_transakcijo.html')
