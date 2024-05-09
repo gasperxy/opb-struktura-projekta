@@ -33,5 +33,5 @@ Več podrobnosti in primere si lahko ogledate v repozitoriju.
 ## Podatkovni nivo
 
 Za namen projekta pri predmetu OPB bomo za dostop do baze postgres uporabljali Python knjižnjico `psycopg2`. V večjih in bolj kompleksnih aplikacij se za podobne namene ponavadi uporablja bolj zmogljive knjižnjice, ki omogočajo uporabo ORM pristopa.
-Kljub temu, predlagam, da si podatkovne modele definirati kot Pythonove razrede oziroma bolj natančno `datamodels`, ki so del standardne Python distribucije.
+Kljub temu, predlagam, da si podatkovne modele definirate kot Pythonove razrede oziroma bolj natančno `datamodels`, ki so del standardne Python distribucije. Za pomoč pri delu z njmi vam je lahko tudi (dodatna) knjižnjica `dataclasses_json`, ki omogoča preprosto ustvarjanje dataclass razredov iz slovarja. To je zelo priročno, saj kot rezultat poizvedbe na postgres bazo ponavadi dobimo seznam slovarjev.
 
