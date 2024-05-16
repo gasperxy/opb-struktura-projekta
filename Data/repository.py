@@ -3,7 +3,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE) # se znebimo prob
 import Data.auth_public as auth
 import datetime
 
-from Data.models import transakcija, oseba, racun, transakcijaDto, Uporabnik
+from Data.models import transakcija, oseba, osebaDto, racun, transakcijaDto, Uporabnik
 from typing import List
 
 ## V tej datoteki bomo implementirali razred Repo, ki bo vseboval metode za delo z bazo.
@@ -24,6 +24,17 @@ class Repo:
         # rezultate querya pretovrimo v python seznam objektov (transkacij)
         transakcije = [transakcija.from_dict(t) for t in self.cur.fetchall()]
         return transakcije
+    
+    def dobi_transakcijo(self, id) -> transakcija:
+         self.cur.execute("""
+            SELECT id, racun, cas, znesek, opis
+            FROM transakcija
+            Where id = %s
+        """, (id,))
+         
+         t = transakcija.from_dict(self.cur.fetchone())
+         return t
+
     
     def dobi_transakcije_dto(self) -> List[transakcijaDto]:
         self.cur.execute("""
@@ -57,6 +68,19 @@ class Repo:
          
         o = oseba.from_dict(self.cur.fetchone())
         return oseba
+
+    def dobi_osebe_dto(self) -> List[osebaDto]:
+        self.cur.execute("""
+            SELECT emso, ime, priimek, rojstvo, ulica, posta, racun.stevilka as stevilka_racuna
+            FROM oseba
+            left join racun on racun.lastnik = oseba.emso 
+                         
+        """)
+        
+        # rezultate querya pretovrimo v python seznam objektov (transkacij)
+       # tt = [t for t in self.cur.fetchall()]
+        osebe = [osebaDto.from_dict(t) for t in self.cur.fetchall()]
+        return osebe
     
     def dobi_racun(self, emso: str) -> racun:
         self.cur.execute("""

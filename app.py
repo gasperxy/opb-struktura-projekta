@@ -42,9 +42,22 @@ def index():
     Domača stran z transakcijami.
     """   
   
-    transakcije = service.dobi_transakcije()  
+    transakcije_dto = service.dobi_transakcije_dto()  
+
         
-    return template_user('transakcije.html', transakcije = transakcije)
+    return template_user('transakcije.html', transakcije = transakcije_dto)
+
+@get('/osebe')
+@cookie_required
+def index():
+    """
+    Domača stran z osebami.    """   
+  
+    osebe = service.dobi_osebe_dto()
+    return template_user('osebe.html', osebe = osebe)
+
+
+
 
 @get('/transakcije_dto')
 def transakcije_dto():
@@ -59,8 +72,10 @@ def transakcije_dto():
 @get('/dodaj_transakcijo')
 def dodaj_transakcijo():
     """
-    Stran za dodajanje transakcije.  """   
-    return template_user('dodaj_transakcijo.html')
+    Stran za dodajanje transakcije.  """
+    osebe = service.dobi_osebe_dto()    
+    return template_user('dodaj_transakcijo.html', osebe=osebe)
+
 
 @post('/dodaj_transakcijo')
 def dodaj_transakcijo_post():
@@ -74,6 +89,22 @@ def dodaj_transakcijo_post():
     
     
     redirect(url('/'))
+
+@get('/uredi_transakcijo/<id:int>')
+def uredi_transakcijo(id):
+    """
+    Stran za urejanje transakcije.  """   
+    osebe = service.dobi_osebe_dto()  
+    transakcija = service.dobi_transakcijo(id)
+    return template_user('uredi_transakcijo.html', transakcija =transakcija, osebe = osebe)
+
+@post('/uredi_transakcijo')
+def uredi_transakcijo_post():
+    """
+    Stran za urejanje transakcije.  """   
+
+    transakcija = service.dobi_transakcijo(id)
+    return template_user('uredi_transakcijo.html', transakcija =transakcija)
 
 @post('/prijava')
 def prijava():

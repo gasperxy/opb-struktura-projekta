@@ -46,7 +46,22 @@ class oseba:
 @dataclass
 class racun:    
     stevilka : int = field(default=0)
-    lastnik : int = field(default=0)
+    lastnik : str = field(default="")
+
+
+
+@dataclass_json
+@dataclass
+class osebaDto:    
+    emso : str = field(default="")  
+    ime : str = field(default="")
+    priimek : str = field(default="")
+    rojstvo: str = field(default="") 
+    ulica : str = field(default="")
+    posta : int = field(default=0)
+    stevilka_racuna: int = field(default=0)
+
+    
 
 
 @dataclass_json

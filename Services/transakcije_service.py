@@ -14,8 +14,14 @@ class TransakcijeService:
     def dobi_osebe(self) -> List[oseba]:
         return self.repo.dobi_osebe()
     
+    def dobi_osebe_dto(self) -> List[osebaDto]:
+        return self.repo.dobi_osebe_dto()
+    
     def dobi_transakcije(self) -> List[transakcija]:
         return self.repo.dobi_transakcije()
+    
+    def dobi_transakcijo(self, id) -> transakcija:
+        return self.repo.dobi_transakcijo(id)
     
     def dobi_transakcije_dto(self) -> List[transakcijaDto]:
         return self.repo.dobi_transakcije_dto()

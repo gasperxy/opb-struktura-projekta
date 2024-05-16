@@ -13,6 +13,7 @@
                 <th>Čas</th>
                 <th>Znesek</th>  
                 <th>Opis</th>  
+                <th>Uredi</th>   
              </tr>
         </thead>
      
@@ -22,6 +23,9 @@
            <td>{{transakcija.cas}}</td>
            <td>{{transakcija.znesek}}</td>
            <td>{{transakcija.opis}}</td>
+           <td>
+            <a href="{{url('uredi_transakcijo', id=transakcija.id)}}"> uredi</a>
+           </td>
      
         </tr>
       %end

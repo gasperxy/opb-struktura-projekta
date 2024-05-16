@@ -1,0 +1,31 @@
+%rebase('osnova.html', naslov='Urejanje transakcije', stran='uredi_transakcijo')
+
+
+
+  <form action="{{url('/uredi_transakcijo')}}" method="POST", style="width: 60%; margin-left: 5%;">
+    <div class="form-group">
+        <label for="racun">Račun</label>      
+        <select class="form-select" name="racun"  aria-placeholder="Izberi Račun">
+           
+            % for oseba in osebe:
+            % if oseba.stevilka_racuna == transakcija.racun: 
+            <option selected value="{{oseba.stevilka_racuna}}">{{oseba.ime + " " + oseba.priimek}}</option>
+            % else:
+            <option value="{{oseba.stevilka_racuna}}">{{oseba.ime + " " + oseba.priimek}}</option>
+            %end
+           
+            %end
+            
+          </select> 
+     </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Znesek</label>
+        <input class="form-control" type="number" step="0.001" name="znesek" value="{{transakcija.znesek}}">      
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Opis</label>
+        <textarea class="form-control" type="text" name="opis" value="{{transakcija.opis}}"></textarea>      
+    </div>      
+    
+    <button type="submit" class="btn btn-primary">Spremeni transakcijo</button>
+  </form>

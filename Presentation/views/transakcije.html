@@ -1,6 +1,7 @@
 %rebase('osnova.html', naslov='Transakcije', stran='transakcije')
 
 <div >
+  <h2>Seznam vseh transakcij</h2>
     <a  href="{{url('/dodaj_transakcijo')}}" class="btn btn-light">
         Dodaj novo transakcijo
      </a>
@@ -12,27 +13,29 @@
       <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Racun</th>
+                
+                <th>Oseba</th>
                 <th>Čas</th>
                 <th>Znesek</th>  
                 <th>Opis</th>  
+                <th>Uredi</th>   
              </tr>
         </thead>
      
       %for transakcija in transakcije:
         <tr>
-           <td>{{transakcija.id}}</td>
-           <td>{{transakcija.racun}}</td>
+           <td>{{transakcija.oseba}}</td>           
            <td>{{transakcija.cas}}</td>
            <td>{{transakcija.znesek}}</td>
+           <td>{{transakcija.opis}}</td>
            <td>
-            {{transakcija.opis}}
+            <a href="{{url('uredi_transakcijo', id=transakcija.id)}}"> uredi</a>
            </td>
      
         </tr>
       %end
       </table>
+
 
 
     </div>    

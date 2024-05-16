@@ -1,0 +1,48 @@
+%rebase('osnova.html', naslov='Osebe', stran='osebe')
+
+<div >
+    <h2>Seznam vseh oseb</h2>    
+       <br>
+      <br>  
+    <div style="display: flex;">
+
+    <div style="flex:1;">
+      <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Ime</th>
+                <th>Priimek</th>
+                <th>Emso</th>
+                <th>Rojstvo</th>   
+                <th>Ulica</th>  
+                <th>Posta</th> 
+                <th>Številka Računa</th>   
+             </tr>
+        </thead>
+     
+      %for oseba in osebe:
+        <tr>
+           <td>{{oseba.ime}}</td>           
+           <td>{{oseba.priimek}}</td>
+           <td>{{oseba.emso}}</td>
+           <td>{{oseba.rojstvo}}</td>
+           <td>{{oseba.ulica}}</td>
+           <td>{{oseba.posta}}</td>
+           <td>{{oseba.stevilka_racuna}}</td>
+        </tr>
+      %end
+      </table>
+
+
+
+    </div>    
+
+    </div>
+   
+</div>
+
+
+  
+
+  

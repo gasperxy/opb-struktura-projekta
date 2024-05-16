@@ -12,37 +12,45 @@
 </head>
 <body> 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-nav">         
+        <div class="navbar-nav">     
+          
+          %if stran=='transakcije':
+          <a class="nav-link active" href="{{url('/')}}">Transakcije</a>
+          %else:
+          <a class="nav-link" href="{{url('/')}}">Transakcije</a>
+          %end
+
+          %if stran=='osebe':
+        <a class="nav-link active" href="{{url('/osebe')}}">Osebe</a>
+        %else:
+        <a class="nav-link" href="{{url('/osebe')}}">Osebe</a>
+        %end  
 
         
         </div>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ml-auto">
+            % if rola and uporabnik:
+            <span class="navbar-text">
+              {{uporabnik}} ({{rola}}) 
+            </span>
+            %end      
+                        
+  
+            <li class="nav-link">
+                <a class="dropdown-item" href="{{url('odjava')}}">Odjava</a>
+            </li>
+            % end
+          </ul>
+        </div>
+
+        
        
         
-          <ul class="navbar-nav ml-auto">
-    
-          
-    
-            
-          </ul>
 
-          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                % if rola:
-                <span class="navbar-text">
-                  Role: {{rola}} 
-                </span>
-                %end           
-                % if uporabnik:
-                <span class="navbar-text">
-                   Uporabnik: {{uporabnik}}
-                </span>               
-
-                <li class="nav-link">
-                    <a class="dropdown-item" href="{{url('odjava')}}">Odjava</a>
-                </li>
-                % end
-            </ul>
-        </div>
+         
       
       </nav>
 <br>

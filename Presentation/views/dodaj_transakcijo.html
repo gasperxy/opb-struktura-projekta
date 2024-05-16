@@ -4,18 +4,23 @@
 
   <form action="{{url('/dodaj_transakcijo')}}" method="POST", style="width: 60%; margin-left: 5%;">
     <div class="form-group">
-        <label for="exampleInputEmail1">Racun</label>
-        <input class="form-control" type="text" name="racun">     
-       
-     </div>
+      <label for="racun">Račun</label>      
+      <select class="form-select" name="racun"  aria-placeholder="Izberi Račun">
+         
+          % for oseba in osebe:
+          <option value="{{oseba.stevilka_racuna}}">{{oseba.ime + " " + oseba.priimek}}</option>
+          %end
+          
+        </select> 
+   </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Znesek</label>
+        <label for="znesek">Znesek</label>
         <input class="form-control" type="number" step="0.001" name="znesek" >      
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Opis</label>
-        <input class="form-control" type="text" name="opis">      
+        <label for="opis">Opis</label>
+        <textarea class="form-control" type="text" name="opis"></textarea>      
     </div>      
-    
-    <button type="submit">Dodaj transakcijo</button>
+    <br>
+    <button type="submit" class="btn btn-primary">Dodaj transakcijo</button>
   </form>
