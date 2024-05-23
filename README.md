@@ -1,3 +1,6 @@
+
+Zagon projekta v Binderju: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gasperxy/opb-struktura-projekta/main?urlpath=proxy%2F8080)
+
 # opb-struktura-projekta
 Pri načrtovanju aplikacije in strukturi programske kode se je dobro držati nekaterih osnovnih pravil. Obstaja veliko različnih pristopov, ki so odvisni od težavnosti ter potreb aplikacije. V tem repozitoriju je predstavljena glavna ideja tako imenovane **clean architecture** strukture aplikacije.
 Glavne prednosti so:
