@@ -2,9 +2,13 @@ import psycopg2, psycopg2.extensions, psycopg2.extras
 psycopg2.extensions.register_type(psycopg2.extensions.UNICODE) # se znebimo problemov s šumniki
 import Data.auth_public as auth
 import datetime
+import os
 
 from Data.models import transakcija, oseba, osebaDto, racun, transakcijaDto, Uporabnik
 from typing import List
+
+# Preberemo port za bazo iz okoljskih spremenljivk
+DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
 
 ## V tej datoteki bomo implementirali razred Repo, ki bo vseboval metode za delo z bazo.
 
