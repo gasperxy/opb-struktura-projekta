@@ -2,6 +2,9 @@ from transakcije_service import TransakcijeService
 from Data.models import *
 
 
+# V tej datoteki lahko testiramo funkcionalnost servisov,
+# brez da zaganjamo celoten projekt.
+
 service = TransakcijeService()
 
 
