@@ -101,10 +101,14 @@ def uredi_transakcijo(id):
 @post('/uredi_transakcijo')
 def uredi_transakcijo_post():
     """
-    Stran za urejanje transakcije.  """   
+    Stran za urejanje transakcije.  """ 
+    id = int(request.forms.get('id'))  
+    racun = int(request.forms.get('racun'))
+    znesek = float(request.forms.get('znesek'))
+    opis = request.forms.get('opis')   
 
-    transakcija = service.dobi_transakcijo(id)
-    return template_user('uredi_transakcijo.html', transakcija =transakcija)
+    service.posodobi_transakcijo(id, racun, znesek, opis)
+    redirect(url('/'))
 
 @post('/prijava')
 def prijava():
@@ -149,6 +153,5 @@ def odjava():
  # Dokler nimate razvitega vmesnika za dodajanje uporabnikov, jih dodajte kar ročno.
 #auth.dodaj_uporabnika('gasper', 'admin', 'gasper')
 if __name__ == "__main__":
-
    
     run(host='localhost', port=SERVER_PORT, reloader=RELOADER, debug=True)

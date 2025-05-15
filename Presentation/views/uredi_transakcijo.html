@@ -3,7 +3,9 @@
 
 
   <form action="{{url('/uredi_transakcijo')}}" method="POST", style="width: 60%; margin-left: 5%;">
+    <input type="hidden" name="id" value="{{transakcija.id}}">
     <div class="form-group">
+
         <label for="racun">Račun</label>      
         <select class="form-select" name="racun"  aria-placeholder="Izberi Račun">
            
@@ -24,7 +26,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Opis</label>
-        <textarea class="form-control" type="text" name="opis" value="{{transakcija.opis}}"></textarea>      
+        <textarea class="form-control" name="opis">{{transakcija.opis}}</textarea>    
     </div>      
     
     <button type="submit" class="btn btn-primary">Spremeni transakcijo</button>

@@ -115,6 +115,12 @@ class Repo:
             """, (t.znesek, t.racun, t.cas, t.opis))
         self.conn.commit()
 
+    def posodobi_transakcijo(self, t : transakcija):
+        self.cur.execute("""
+            Update transakcija set znesek = %s, racun = %s, opis = %s where id = %s
+            """, (t.znesek, t.racun, t.opis, t.id))
+        self.conn.commit()
+
     def dodaj_uporabnika(self, uporabnik: Uporabnik):
         self.cur.execute("""
             INSERT into uporabniki(username, role, password_hash, last_login)

@@ -60,6 +60,17 @@ class TransakcijeService:
         # uporabimo repozitorij za zapis v bazo
         self.repo.dodaj_transakcijo(t)
 
+    def posodobi_transakcijo(self, id: int, racun: int, znesek: float, opis: str) -> None:
+        # Naredimo objekt za transakcijo
+        t = transakcija(
+            id=id,
+            racun=racun,
+            znesek=znesek,            
+            opis=opis
+            )        
+        # uporabimo repozitorij za zapis v bazo
+        self.repo.posodobi_transakcijo(t)
+
     def izplacaj_nagrado(self, znesek: float, opis: str) -> None:
 
         # Vsek osebam bi radi izplačali nagrado.
