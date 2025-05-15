@@ -117,8 +117,8 @@ class Repo:
 
     def posodobi_transakcijo(self, t : transakcija):
         self.cur.execute("""
-            Update transakcija set znesek = %s, racun = %s, opis = %s where id = %s
-            """, (t.znesek, t.racun, t.opis, t.id))
+            Update transakcija set znesek = %s, racun = %s, cas=%s, opis = %s where id = %s
+            """, (t.znesek, t.racun, t.cas, t.opis, t.id))
         self.conn.commit()
 
     def dodaj_uporabnika(self, uporabnik: Uporabnik):

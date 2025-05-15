@@ -83,9 +83,10 @@ def dodaj_transakcijo_post():
 
     racun = int(request.forms.get('racun'))
     znesek = float(request.forms.get('znesek'))
-    opis = request.forms.get('opis')   
+    opis = request.forms.get('opis')
+    cas = request.forms.get('cas')   
 
-    service.naredi_transakcijo(racun, znesek, opis)
+    service.naredi_transakcijo(racun, cas, znesek, opis)
     
     
     redirect(url('/'))
@@ -106,8 +107,9 @@ def uredi_transakcijo_post():
     racun = int(request.forms.get('racun'))
     znesek = float(request.forms.get('znesek'))
     opis = request.forms.get('opis')   
-
-    service.posodobi_transakcijo(id, racun, znesek, opis)
+    cas = request.forms.get('cas') 
+    
+    service.posodobi_transakcijo(id, racun, cas, znesek, opis)
     redirect(url('/'))
 
 @post('/prijava')

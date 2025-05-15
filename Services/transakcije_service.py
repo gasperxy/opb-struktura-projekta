@@ -44,7 +44,7 @@ class TransakcijeService:
         # uporabimo repozitorij za zapis v bazo
         self.repo.dodaj_transakcijo(t)
 
-    def naredi_transakcijo(self, racun: int, znesek: float, opis: str) -> None:
+    def naredi_transakcijo(self, racun: int, cas:str, znesek: float, opis: str) -> None:
        
         # Naredimo objekt za transakcijo.
         # Za to potrebujemo številko računa.
@@ -54,17 +54,18 @@ class TransakcijeService:
         t = transakcija(
             racun=racun,
             znesek=znesek,
-            cas=datetime.now(),
+            cas=cas,
             opis=opis
             )        
         # uporabimo repozitorij za zapis v bazo
         self.repo.dodaj_transakcijo(t)
 
-    def posodobi_transakcijo(self, id: int, racun: int, znesek: float, opis: str) -> None:
+    def posodobi_transakcijo(self, id: int, racun: int, cas:str, znesek: float, opis: str) -> None:
         # Naredimo objekt za transakcijo
         t = transakcija(
             id=id,
             racun=racun,
+            cas=cas,
             znesek=znesek,            
             opis=opis
             )        
